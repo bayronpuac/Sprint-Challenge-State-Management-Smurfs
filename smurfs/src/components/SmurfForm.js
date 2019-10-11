@@ -24,7 +24,7 @@ const SmurfForm = props => {
             height: ''
         })
     }
-    console.log('smurfs')
+
     return (<>
     <form onSubmit={submitHandler}>
         <input
@@ -32,7 +32,7 @@ const SmurfForm = props => {
         type="text"
         value={newSmurf.name}
         onChange={(e) => changeHandler(e)}
-        placeholder="Add new member"
+        placeholder="Add new smurf"
         />
         <input
         name='age'
@@ -57,7 +57,7 @@ const SmurfForm = props => {
     const mapStateToProps = state => {
         return {
             isLoading: state.isLoading,
-            chars: state.chars,
+            smurf: state.smurf,
             test: state.test
         };
       } ;

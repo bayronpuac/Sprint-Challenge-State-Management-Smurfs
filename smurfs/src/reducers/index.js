@@ -1,7 +1,7 @@
 import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE } from '../actions';
 
 const initialState = {
-    smur: [],
+    smurf: [],
     isFetching: false,
     error: ' ', 
     smurfList: [
@@ -18,12 +18,12 @@ const initialState = {
             id: 1
         }
     ]
-}
+};
 
     
 
   const reducer = (state = initialState, action) => {
-    console.log(initialState.smurfList, 'smur')
+    console.log(state, 'smurf')
     switch (action.type) {
       case START_FETCHING:
         return {
@@ -32,7 +32,6 @@ const initialState = {
           error: ''
         };
       case FETCH_SUCCESS:
-          console.log(action.payload)
         return {
           ...state,
           isFetching: false,
@@ -43,7 +42,6 @@ const initialState = {
         return {
           ...state,
           error: action.payload,
-          
           isFetching: false
         };
       default:

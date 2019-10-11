@@ -1,10 +1,21 @@
 import React from 'react';
+import {
+  Card, CardText, CardBody,
+  CardTitle, CardSubtitle
+} from 'reactstrap';
 
 const Smurfs = props => {
-    console.log('smurfs', props.char.name)
-    return (<>
-    <h1>{props.char.name}</h1>
-    </>
-    )}
+  return (
+    <div>
+      <Card>
+        <CardBody>
+          <CardTitle>Name: {props.item.name}</CardTitle>
+          <CardSubtitle>Age: {props.item.age}</CardSubtitle>
+          <CardText>Height: {props.item.height}</CardText>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
 
-export default (Smurfs); 
+export default Smurfs;

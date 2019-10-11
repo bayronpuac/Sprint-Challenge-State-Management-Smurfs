@@ -6,15 +6,12 @@ import {getSmurf} from '../actions';
 
 const SmurfList = props => {
     return (<>
-    <h1>Look at these Smurfs</h1>
+    <h1>Look at these smurf!</h1>
     <h1>{props.test}
     </h1>
-    <button onClick={props.getSmurf}>
-        </button>
-        {props.chars && props.chars.map(info => (
-            <Smurfs key={info.name} char={info} />
-        ))}
-
+        {props.smurf && props.smurf.map(item => (
+            <Smurfs key={item.id} item={item} />
+        ))} 
         <SmurfForm />
     </>
     )}
@@ -23,7 +20,7 @@ const SmurfList = props => {
 const mapStateToProps = state => {
     return {
         isLoading: state.isLoading,
-        chars: state.chars,
+        smurf: state.smurf,
         test: state.test
     };
   } ;
