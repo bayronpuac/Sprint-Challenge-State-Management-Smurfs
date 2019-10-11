@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {getSmurf} from '../actions'
 import { connect } from 'react-redux';
+import { addSmurf } from '../actions';
 
 const SmurfForm = props => {
 
@@ -17,7 +17,7 @@ const SmurfForm = props => {
 
     const submitHandler = e => {
         e.preventDefault();
-        props.getSmurf(newSmurf)
+        props.addSmurf(newSmurf)
         setNewSmurf({
             name: '',
             age: '',
@@ -62,4 +62,4 @@ const SmurfForm = props => {
         };
       } ;
 
-export default connect(mapStateToProps,{getSmurf})(SmurfForm); 
+export default connect(mapStateToProps,{addSmurf})(SmurfForm); 

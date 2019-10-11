@@ -1,21 +1,14 @@
-import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE } from '../actions';
+import { START_FETCHING, FETCH_SUCCESS, ADD_SUCCESS, ADD_FETCHING, FETCH_FAILURE, ADD_FAILURE } from '../actions';
 
 const initialState = {
-    smurf: [],
     isFetching: false,
     error: ' ', 
-    smurfList: [
+    smurf: [
         {
             name: "Brainey",
             age: 200,
             height: "5cm",
             id: 0
-        },
-        {
-            name: "Sleepy",
-            age: 200,
-            height: "5cm",
-            id: 1
         }
     ]
 };
@@ -36,14 +29,28 @@ const initialState = {
           ...state,
           isFetching: false,
           error: '',
-          smur: action.payload
+          smurf: action.payload
         };
-      case FETCH_FAILURE:
+        case FETCH_FAILURE: 
         return {
-          ...state,
-          error: action.payload,
-          isFetching: false
-        };
+            ...state, 
+            error: action.payload,
+            isFetching: false
+        }
+        case ADD_FETCHING:
+            return {
+              ...state,
+            };
+        case ADD_SUCCESS:
+            return {
+              ...state,
+              smurf: [...action.payload]
+            };
+        case ADD_FAILURE:
+            return{
+                ...state,
+                error: action.payload
+            }
       default:
         return state;
     }

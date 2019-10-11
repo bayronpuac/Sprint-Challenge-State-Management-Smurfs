@@ -1,29 +1,34 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+
+import {getSmurf} from '../actions/index';
+
 import Smurfs from './Smurfs';
-import SmurfForm from './SmurfForm';
-import {getSmurf} from '../actions';
 
 const SmurfList = props => {
-    return (<>
-    <h1>Look at these smurf!</h1>
-    <h1>{props.test}
-    </h1>
-        {props.smurf && props.smurf.map(item => (
-            <Smurfs key={item.id} item={item} />
-        ))} 
-        <SmurfForm />
-    </>
-    )}
+  useEffect(()=> {
+    props.getSmurf();
+  },[]);
+  if (props.isFetching) {
+    return <h2> Loading Smurfs .......</h2>;
+  }
+  return (
+    <div>
+      {props.error && <p>{props.error}</p>}
+      {props.smurf.map(item => (
+        <Smurfs key={item.id} item={item} height={item.height} name={item.name} age={item.age} />
+      ))}
+      
+    </div>
+  );
+};
 
-//connecting to the redux store
 const mapStateToProps = state => {
-    return {
-        isLoading: state.isLoading,
-        smurf: state.smurf,
-        test: state.test
-    };
-  } ;
+  return {
+    smurf: state.smurf,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
 
-
-export default connect(mapStateToProps,{getSmurf})(SmurfList); 
+export default connect(mapStateToProps,{getSmurf})(SmurfList);
