@@ -4,7 +4,7 @@ const initialState = {
     smur: [],
     isFetching: false,
     error: ' ', 
-    list: [
+    smurfList: [
         {
             name: "Brainey",
             age: 200,
@@ -23,6 +23,7 @@ const initialState = {
     
 
   const reducer = (state = initialState, action) => {
+    console.log(initialState.smurfList, 'smur')
     switch (action.type) {
       case START_FETCHING:
         return {
@@ -42,6 +43,7 @@ const initialState = {
         return {
           ...state,
           error: action.payload,
+          
           isFetching: false
         };
       default:
